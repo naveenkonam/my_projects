@@ -8,12 +8,16 @@ import pandas as pd
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgp.css']
 app = dash.Dash(__name__,external_stylesheets=external_stylesheets)
 
-df = pd.DataFrame({"Fruit":["Apples","Oranges"],"Amount":[4,1]})
+df = pd.read_excel(r"/home/konam/Desktop/RCC.xlsx")
 
-fig = px.bar(df, x = "Fruit", y = "Amount")
+fig = px.bar(df, x = "Date", y = "RCC")
+#fig1 = px.bar(df, x = "Date", y = "Fab")
 
-app.layout= dhl.Div(children=[dhl.H1(children='Hello Dash'),
-    dcc.Graph(id = 'example',figure = fig)])
+app.layout= dhl.Div(children=[dhl.H1(children='RCC'),
+    dcc.Graph(id = 'RCC',figure = fig)])
+
+#app.layout=dhl.Div(children=[dhl.H1(children='Fab'),
+ #   dcc.Graph(id='Fab',figure = fig1)])
 
 if __name__ ==  '__main__':
     app.run_server(debug=True)
